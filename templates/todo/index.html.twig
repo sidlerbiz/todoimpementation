@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block title %}Todo list{% endblock %}
+
+{# @var todo \App\Entity\Todo #}
+
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('todo_list') }}" title="Home page">Home</a></li>
+        <li class="active">Todos list</li>
+    </ol>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>TODO</th>
+            <th>Due date</th>
+            <th>Is Done</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <h2 class="page-header">Todo List  <a href="{{ path('todo_create') }}" class="btn btn-primary" title="Create Todo"> Create Todo</a></h2>
+
+
+        {% for todo in todos %}
+            <tr>
+                <th scope="row">{{ todo.id }}</th>
+                <td>{{ todo.name }}</td>
+                <td>{{ todo.dueDate|date('F j, Y, g:i a') }}</td>
+                <td>
+                    {% if todo.isDone %}
+                        <a href="{{ path('todo_reset', {'id': todo.id}) }}" class="btn btn-danger btn-sm" title="Reset task">Reset</a>
+                    {% else %}
+                        <a href="{{ path('todo_done', {'id': todo.id}) }}" class="btn btn-success btn-sm" title="Done task">Done</a>
+                    {% endif %}
+                </td>
+                <td><a href="{{ path('todo_details', {'id': todo.id}) }}" class="btn btn-success" title="View task">View</a></td>
+                <td><a href="{{ path('todo_edit', {'id': todo.id}) }}" class="btn btn-primary" title="Edit task">Edit</a></td>
+                <td><a href="{{ path('todo_delete', {'id': todo.id}) }}" class="btn btn-danger" title="Delete task">Delete</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <th colspan="7" class="text-center warning">No</th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <form action="#" method="post">
+        <p><b>Как по вашему мнению расшифровывается аббревиатура &quot;ОС&quot;?</b></p>
+        <p><input type="radio" name="answer" value="a1">Офицерский состав<Br>
+            <input type="radio" name="answer" value="a2">Операционная система<Br>
+            <input type="radio" name="answer" value="a3">Большой полосатый мух</p>
+        <p><input type="submit"></p>
+    </form>
+{% endblock %}

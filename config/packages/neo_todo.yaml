@@ -1,0 +1,2 @@
+neo_todo:
+    entity_name: App\Entity\Todo

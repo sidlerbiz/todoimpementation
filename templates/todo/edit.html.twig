@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Todo edit{% endblock %}
+
+{% block body %}
+
+    <ol class="breadcrumb">
+        <li><a href="{{ path('todo_list') }}" title="Home page">Home</a></li>
+        <li><a href="{{ path('todo_list') }}" title="Todo list">Todo list</a></li>
+        <li class="active">Edit</li>
+    </ol>
+
+    <h2 class="page-header">Edit</h2>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

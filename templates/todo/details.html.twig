@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{# @var todo \App\Entity\Todo #}
+
+{% block title %}{{ todo.name }} - Details{% endblock %}
+{% block body %}
+
+    <ol class="breadcrumb">
+        <li><a href="{{ path('todo_list') }}" title="Home page">Home</a></li>
+        <li><a href="{{ path('todo_list') }}" title="Task list">Todo list</a></li>
+        <li class="active">Details</li>
+    </ol>
+
+    <h2 class="page-header">{{ todo.name }}</h2>
+
+    <ul class="list-group">
+
+        <li class="list-group-item"><strong>Is Done:</strong> {{ todo.isDone ? 'Yes' : 'Not' }}</li>
+        <li class="list-group-item"><strong>Due date:</strong> {{ todo.dueDate|date('F j, Y, g:i a') }}</li>
+    </ul>
+
+    <div>
+        {{ todo.description }}
+    </div>
+
+{% endblock %}
