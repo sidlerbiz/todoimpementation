@@ -1,2 +1,2 @@
-# Todo Bundle Impementation  #Information for DAXX#
+# Todo Bundle Impementation
 # Used Symfony 4.2
